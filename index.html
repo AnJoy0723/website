@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>AnJoy'S Blog</title>
+    <style>
+      /* 居中显示时间的样式 */
+      .time-container {
+        text-align: center; /* 文本居中 */
+        margin-top: 3%; /* 从顶部3%的位置开始 */
+      }
+      .time {
+        font-size: 42px; /* 设置字体大小 */
+        font-family: 'Arial', sans-serif; /* 设置字体 */
+        margin-bottom: 10px; /* 时间与日期之间的间距 */
+      }
+      .date {
+        font-size: 32px; /* 设置日期字体大小 */
+        font-family: 'Arial', sans-serif; /* 设置字体 */
+      }
+    </style>
+    <link rel="stylesheet" href="public/css/style.css" />
+     <link rel="shortcut icon" href="public/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+    <canvas id="bg"></canvas>
+    <main class="container">
+      <img
+        class="avatar"
+        src="https://avatars.githubusercontent.com/u/173988586?v=4"
+        alt="Avatar"
+      />
+      <h3 class="nickname">AnJoy</h3>
+      <p class="introduce">Attendre et espérer</p>
+      <!-- 显示当前时间与日期-->
+      <div class="time-container">
+        <p class="time" id="showTime"></p>
+        <p class="date" id="showDate"></p>
+      </div>
+      <nav>
+        <!--博客地址-->
+        <div class="item">
+          <a target="_blank" href="https://anjoy0723.github.io/">
+            <img src="public/svg/github.svg" />
+          </a>
+          <div class="tooltip">博客入口</div>
+        </div>
+      </nav>
+      <p class="quote" id="random-quote">
+        <!-- 这里将会显示随机一言 -->
+      </p>
+      <footer>
+        <a
+          target="_blank"
+          class="icp"
+          href="https://beian.miit.gov.cn/#/Integrated/index"
+          ></a
+        >
+        <p class="copyright">
+          Copyright© 2023 5IFXW.CN. All Rights Reserved
+        </p>
+      </footer>
+    </main>
+    <script src="public/js/StarrySky.js"></script>
+    <script src="public/js/index.js"></script>
+    <script>
+      // 使用 JavaScript 获取随机一言并替换到页面中
+      fetch('https://v1.hitokoto.cn') // 使用 v1.hitokoto.cn 提供的随机一言 API
+        .then(response => response.json())
+        .then(data => {
+          const quoteElement = document.getElementById('random-quote');
+          quoteElement.textContent = data.hitokoto; // 获取随机一言内容并替换到页面
+        })
+        .catch(error => {
+          console.error('无法获取随机一言:', error);
+        });
+    </script>
+   <script>
+    // 显示时间的函数
+    function showTime() {
+      var date = new Date(); // 创建一个新的Date对象
+      var h = date.getHours(); // 获取小时
+      var m = date.getMinutes(); // 获取分钟
+      var s = date.getSeconds(); // 获取秒钟
+      // 如果小于10，则在前面补0
+      h = (h < 10) ? "0" + h : h;
+      m = (m < 10) ? "0" + m : m;
+      s = (s < 10) ? "0" + s : s;
+      // 将时间格式化为HH:MM:SS
+      var time = h + ":" + m + ":" + s;
+      // 将时间显示在id为showTime的元素中
+      document.getElementById("showTime").innerHTML = time;
+    }
+    // 显示日期的函数
+    function showDate() {
+      var date = new Date(); // 创建一个新的Date对象
+      var year = date.getFullYear(); // 获取年份
+      var month = date.getMonth() + 1; // 获取月份
+      var day = date.getDate(); // 获取日期
+      // 如果月份或日期小于10，则在前面补0
+      month = (month < 10) ? "0" + month : month;
+      day = (day < 10) ? "0" + day : day;
+      // 将日期格式化为YYYY-MM-DD
+      var dateStr = year + "-" + month + "-" + day;
+      // 将日期显示在id为showDate的元素中
+      document.getElementById("showDate").innerHTML = dateStr;
+    }
+    // 页面加载完成后立即显示时间和日期
+    window.onload = function() {
+      showTime();
+      showDate();
+    };
+    // 每秒更新时间和日期
+    setInterval(showTime, 1000);
+    setInterval(showDate, 1000);
+  </script>
+  </body>
+</html>
