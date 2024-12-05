@@ -35,11 +35,6 @@
       />
       <h3 class="nickname">AnJoy</h3>
       <p class="introduce">Attendre et espérer</p>
-      <!-- 显示当前时间与日期-->
-      <div class="time-container">
-        <p class="time" id="showTime"></p>
-        <p class="date" id="showDate"></p>
-      </div>
       <nav>
         <!--博客地址-->
         <div class="item">
@@ -47,6 +42,20 @@
             <img src="public/svg/github.svg" />
           </a>
           <div class="tooltip">博客入口</div>
+        </div>
+         <!--B站地址-->
+        <div class="item">
+          <a target="_blank" href="https://space.bilibili.com/121854846?spm_id_from=333.1007.0.0">
+            <img src="https://i0.hdslb.com/bfs/face/5c954b13f51e4179cdff475574246305a6aae92f.jpg@240w_240h_1c_1s_!web-avatar-space-header.avif" />
+          </a>
+          <div class="tooltip">bilibili</div>
+        </div>
+        <!--CSDN地址-->
+        <div class="item">
+          <a target="_blank" href="https://blog.csdn.net/m0_63706703?spm=1000.2115.3001.5343">
+            <img src="https://profile-avatar.csdnimg.cn/513781653fc74f89b3451a01df62af90_m0_63706703.jpg!1" />
+          </a>
+          <div class="tooltip">CSDN</div>
         </div>
       </nav>
       <p class="quote" id="random-quote">
@@ -78,44 +87,5 @@
           console.error('无法获取随机一言:', error);
         });
     </script>
-   <script>
-    // 显示时间的函数
-    function showTime() {
-      var date = new Date(); // 创建一个新的Date对象
-      var h = date.getHours(); // 获取小时
-      var m = date.getMinutes(); // 获取分钟
-      var s = date.getSeconds(); // 获取秒钟
-      // 如果小于10，则在前面补0
-      h = (h < 10) ? "0" + h : h;
-      m = (m < 10) ? "0" + m : m;
-      s = (s < 10) ? "0" + s : s;
-      // 将时间格式化为HH:MM:SS
-      var time = h + ":" + m + ":" + s;
-      // 将时间显示在id为showTime的元素中
-      document.getElementById("showTime").innerHTML = time;
-    }
-    // 显示日期的函数
-    function showDate() {
-      var date = new Date(); // 创建一个新的Date对象
-      var year = date.getFullYear(); // 获取年份
-      var month = date.getMonth() + 1; // 获取月份
-      var day = date.getDate(); // 获取日期
-      // 如果月份或日期小于10，则在前面补0
-      month = (month < 10) ? "0" + month : month;
-      day = (day < 10) ? "0" + day : day;
-      // 将日期格式化为YYYY-MM-DD
-      var dateStr = year + "-" + month + "-" + day;
-      // 将日期显示在id为showDate的元素中
-      document.getElementById("showDate").innerHTML = dateStr;
-    }
-    // 页面加载完成后立即显示时间和日期
-    window.onload = function() {
-      showTime();
-      showDate();
-    };
-    // 每秒更新时间和日期
-    setInterval(showTime, 1000);
-    setInterval(showDate, 1000);
-  </script>
   </body>
 </html>
