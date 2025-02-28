@@ -5,29 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <title>AnJoy's Blog</title>
-    <style>
-      /* 居中显示时间的样式 */
-      .time-container {
-        text-align: center; /* 文本居中 */
-        margin-top: 20px; /* 从顶部20px开始 */
-      }
-      .time {
-        font-size: 42px; /* 设置字体大小 */
-        font-family: 'Arial', sans-serif; /* 设置字体 */
-        margin-bottom: 10px; /* 时间与日期之间的间距 */
-      }
-      .date {
-        font-size: 32px; /* 设置日期字体大小 */
-        font-family: 'Arial', sans-serif; /* 设置字体 */
-      }
-    </style>
+    <title>AnJoy'S Blog</title>
     <link rel="stylesheet" href="public/css/style.css" />
      <link rel="shortcut icon" href="public/img/favicon.ico" type="image/x-icon">
+     <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+      }
+      .navbar {
+          overflow: hidden;
+          background-color: black;
+          text-align: center; /* 使导航栏居中 */
+      }
+      .navbar a {
+          display: inline-block; /* 使链接水平排列 */
+          color: white;
+          text-align: center;
+          padding: 14px 20px;
+          text-decoration: none;
+          transition: background-color 0.3s; /* 过渡效果 */
+      }
+  </style>
   </head>
   <body>
+
     <canvas id="bg"></canvas>
     <main class="container">
+      <div class="navbar">
+        <a href="javascript:void(0);">首页</a>
+        <a target="_parent" href="https://anjoy0723.github.io/">博客</a>
+        <a href="#about">关于</a>
+      </div>
       <img
         class="avatar"
         src="https://avatars.githubusercontent.com/u/173988586?v=4"
@@ -35,19 +45,12 @@
       />
       <h3 class="nickname">AnJoy</h3>
       <p class="introduce">Attendre et espérer</p>
-      <nav>
-        <!--博客地址-->
-        <div class="item">
-          <a target="_self" href="https://anjoy0723.github.io/">
-            <img src="public/svg/github.svg" />
-          </a>
-          <div class="tooltip">博客入口</div>
-        </div>
-
-      </nav>
       <p class="quote" id="random-quote">
         <!-- 这里将会显示随机一言 -->
       </p>
+      <nav>
+
+      </nav>
       <footer>
         <a
           target="_blank"
